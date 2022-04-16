@@ -3,6 +3,7 @@ init:
 	pip install --upgrade pip setuptools wheel pip-tools
 
 .PHONY: dependencies
+dependencies:
 	pip install -r requirements.txt
 
 .PHONY: dependencies-dev
