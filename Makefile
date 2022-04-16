@@ -12,7 +12,7 @@ dev-install:
 
 .PHONY: update
 update:
-	pip-compile --upgrade --output-file requirements.txt requirements.in
+	pip-compile --upgrade
 	pip install --upgrade -r requirements.txt
 	pip install --upgrade -r requirements-dev.txt
 	pre-commit autoupdate
