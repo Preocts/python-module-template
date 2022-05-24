@@ -151,8 +151,8 @@ Makefile.
 | PHONY             | Description                                                        |
 | ----------------- | ------------------------------------------------------------------ |
 | `init`            | Update pip, setuptools, and wheel to newest version                |
-| `dev-install`     | install development requirements and project                       |
-| `update`          | Run any update scripts for requirements                            |
+| `install`         | install requirements of project                                    |
+| `install-dev`     | install development requirements and project                       |
 | `build-dist`      | Build source distribution and wheel distribution                   |
 | `clean-artifacts` | Deletes python/mypy artifacts including eggs, cache, and pyc files |
 | `clean-tests`     | Deletes tox, coverage, and pytest artifacts                        |
