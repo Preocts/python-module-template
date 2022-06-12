@@ -27,14 +27,22 @@ Straight forward to use!
 ### Multi file module projects
 
 - All the steps above
-- `py_modules = module_example` becomes a multi-line config with each module name
-
 
 ### GitHub Actions
 
 This module is loaded with a `python-tests.yml` which will execute some github actions running unit tests and coverage checks. This file and directory can be removed if undesired.
 
 Within the `python-tests.yml` there is a commented step `Upload coverave to Codecov`.  If you have the repo associated with Covecov you can uncomment this step and the results of the coverage will be sent automagically.
+
+
+### Note on flake8:
+
+`flake8` is included in the `requirements-dev.txt` of the project. However it disagrees with `black`, the formatter of choice, on max-line-length and two general linting errors. `.pre-commit-config.yaml` is already configured to ignore these. `flake8` doesn't support `pyproject.toml` so be sure to add the following to the editor of choice as needed.
+
+```ini
+--ignore=W503,E203
+--max-line-length=88
+```
 
 ---
 
