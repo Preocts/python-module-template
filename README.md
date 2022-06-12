@@ -12,11 +12,6 @@
 
 - [Python](https://python.org) >= 3.8
 
-## Internal Links
-
-- [Development Installation Guide](docs/development.md)
-- [Repo documentation](docs/)
-
 ---
 
 ## A template for my non-library style boilerplate.
@@ -28,7 +23,6 @@ Straight forward to use!
 - Rename `module_example.py` as desired
 - Update `py_modules = module_example` in `setup.cfg` with name
 - Update requirements.in as needed
-- Run `make update` to populate requirements.txt
 
 ### Multi file module projects
 
