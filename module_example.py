@@ -3,7 +3,6 @@
 
 def main() -> bool:
     """Main"""
-    print("The square of 2 is:", squared(2))
     return True
 
 
