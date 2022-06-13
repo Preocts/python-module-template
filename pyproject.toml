@@ -58,7 +58,9 @@ no_implicit_optional = true
 warn_redundant_casts = true
 warn_unused_ignores = true
 
-[tool.mypy-tests]
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_incomplete_defs = false
 disallow_untyped_defs = false
 
 [tool.coverage.run]
