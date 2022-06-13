@@ -4,13 +4,13 @@ init:
 
 .PHONY: install
 install:
-	[ -f "requirements.txt" ] && pip install -r requirements.txt
+	[ -f "requirements.txt" ] && pip install -r requirements.txt || true
 	flit install
 
 .PHONY: install-dev
 install-dev:
-	[ -f "requirements.txt" ] && pip install -r requirements.txt
-	[ -f "requirements-dev.txt" ] && pip install -r requirements-dev.txt
+	[ -f "requirements.txt" ] && pip install -r requirements.txt || true
+	[ -f "requirements-dev.txt" ] && pip install -r requirements-dev.txt || true
 	flit install --symlink
 	pre-commit install
 
