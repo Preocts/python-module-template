@@ -21,14 +21,15 @@ Straight forward to use!
 ### Single module projects
 
 - Rename `module_example.py` as desired
-- Update `py_modules = module_example` in `setup.cfg` with name
+  - `[project]` `name` value must match file name
 - Update requirements.txt as needed
+- *Optional* Use `pyproject.toml` for dependencies and optional-dependencies instead
 
 ### Multi file module projects
 
 - All the steps above
-- `py_modules = module_example` becomes a multi-line config with each module name
-
+- `[project]` `name` value must match module folder
+- *Optional*: Set `[tool.flit.module]` if [project name and module folder differ](https://flit.pypa.io/en/latest/pyproject_toml.html#module-section)
 
 ### GitHub Actions
 
@@ -92,14 +93,20 @@ call the version of the interpreter used to create the `venv`
 Install editable library and development requirements:
 
 ```bash
-# Update pip and tools
-python -m pip install --upgrade pip wheel setuptools
+# Update pip and install flit
+python -m pip install --upgrade pip flit
 
 # Install development requirements
 python -m pip install -r requirements-dev.txt
 
 # Install requirements (if any defined)
 python -m pip install -r requirements.txt
+
+# Install package
+flit install
+
+# Optional: install editable package (pip install -e)
+flit install --symlink
 ```
 
 Install pre-commit [(see below for details)](#pre-commit):
@@ -132,6 +139,17 @@ deactivate
 
 ---
 
+## Note on flake8:
+
+`flake8` is included in the `requirements-dev.txt` of the project. However it disagrees with `black`, the formatter of choice, on max-line-length and two general linting errors. `.pre-commit-config.yaml` is already configured to ignore these. `flake8` doesn't support `pyproject.toml` so be sure to add the following to the editor of choice as needed.
+
+```ini
+--ignore=W503,E203
+--max-line-length=88
+```
+
+---
+
 ## [pre-commit](https://pre-commit.com)
 
 > A framework for managing and maintaining multi-language pre-commit hooks.
@@ -151,9 +169,9 @@ Makefile.
 
 | PHONY             | Description                                                        |
 | ----------------- | ------------------------------------------------------------------ |
-| `init`            | Update pip, setuptools, and wheel to newest version                |
-| `install`         | install requirements of project                                    |
-| `install-dev`     | install development requirements and project                       |
+| `init`            | Install/Update pip and flit                                        |
+| `install`         | install project and requirements                                   |
+| `install-dev`     | install dev requirements, project as editable, and pre-commit      |
 | `build-dist`      | Build source distribution and wheel distribution                   |
 | `clean-artifacts` | Deletes python/mypy artifacts including eggs, cache, and pyc files |
 | `clean-tests`     | Deletes tox, coverage, and pytest artifacts                        |
