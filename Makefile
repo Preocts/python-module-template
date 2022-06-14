@@ -1,17 +1,17 @@
 .PHONY: init
 init:
-	pip install --upgrade pip setuptools wheel pip-tools
+	python -m pip install --upgrade pip setuptools wheel
 
 .PHONY: install
 install:
 	[ -f "requirements.txt" ] && pip install -r requirements.txt || true
-	pip install --upgrade .
+	python -m pip install --upgrade .
 
 .PHONY: install-dev
 install-dev:
 	[ -f "requirements.txt" ] && pip install -r requirements.txt || true
 	[ -f "requirements-dev.txt" ] && pip install -r requirements-dev.txt || true
-	pip install --editable .
+	python -m pip install --editable .
 	pre-commit install
 
 .PHONY: build-dist
