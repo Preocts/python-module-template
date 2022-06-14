@@ -130,6 +130,14 @@ Run tests:
 tox [-r] [-e py3x]
 ```
 
+Build dist:
+
+```bash
+python -m pip install --upgrade build
+
+python -m build
+```
+
 To deactivate (exit) the `venv`:
 
 ```bash
