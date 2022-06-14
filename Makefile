@@ -16,7 +16,8 @@ install-dev:
 
 .PHONY: build-dist
 build-dist:
-	python setup.py sdist bdist_wheel
+	pip install --upgrade build
+	python -m build
 
 .PHONY: clean-artifacts
 clean-artifacts:
