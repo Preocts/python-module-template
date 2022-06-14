@@ -1,22 +1,22 @@
 .PHONY: init
 init:
-	pip install --upgrade pip flit
+	pip install --upgrade pip setuptools wheel pip-tools
 
 .PHONY: install
 install:
 	[ -f "requirements.txt" ] && pip install -r requirements.txt || true
-	flit install
+	pip install --upgrade .
 
 .PHONY: install-dev
 install-dev:
 	[ -f "requirements.txt" ] && pip install -r requirements.txt || true
 	[ -f "requirements-dev.txt" ] && pip install -r requirements-dev.txt || true
-	flit install --symlink
+	pip install --editable .
 	pre-commit install
 
 .PHONY: build-dist
 build-dist:
-	flit build
+	python setup.py sdist bdist_wheel
 
 .PHONY: clean-artifacts
 clean-artifacts:
