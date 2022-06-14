@@ -21,15 +21,14 @@ Straight forward to use!
 ### Single module projects
 
 - Rename `module_example.py` as desired
-  - `[project]` `name` value must match file name
 - Update requirements.txt as needed
 - *Optional* Use `pyproject.toml` for dependencies and optional-dependencies instead
 
 ### Multi file module projects
 
 - All the steps above
-- `[project]` `name` value must match module folder
-- *Optional*: Set `[tool.flit.module]` if [project name and module folder differ](https://flit.pypa.io/en/latest/pyproject_toml.html#module-section)
+- If more than one module folder exists:
+  - Uncomment and set `[tool.setuptools.packages.find]` in `pyproject.tolm`
 
 ### GitHub Actions
 
@@ -93,8 +92,8 @@ call the version of the interpreter used to create the `venv`
 Install editable library and development requirements:
 
 ```bash
-# Update pip and install flit
-python -m pip install --upgrade pip flit
+# Update pip, setuptools, and wheel
+python -m pip install --upgrade pip setuptools wheel pip-tools
 
 # Install development requirements
 python -m pip install -r requirements-dev.txt
@@ -103,10 +102,10 @@ python -m pip install -r requirements-dev.txt
 python -m pip install -r requirements.txt
 
 # Install package
-flit install
+pip install .
 
 # Optional: install editable package (pip install -e)
-flit install --symlink
+pip install --editable .
 ```
 
 Install pre-commit [(see below for details)](#pre-commit):
@@ -129,6 +128,14 @@ Run tests:
 
 ```bash
 tox [-r] [-e py3x]
+```
+
+Build dist:
+
+```bash
+python -m pip install --upgrade build
+
+python -m build
 ```
 
 To deactivate (exit) the `venv`:
@@ -167,13 +174,13 @@ This repo has a Makefile with some quality of life scripts if the system
 supports `make`.  Please note there are no checks for an active `venv` in the
 Makefile.
 
-| PHONY             | Description                                                        |
-| ----------------- | ------------------------------------------------------------------ |
-| `init`            | Install/Update pip and flit                                        |
-| `install`         | install project and requirements                                   |
-| `install-dev`     | install dev requirements, project as editable, and pre-commit      |
-| `build-dist`      | Build source distribution and wheel distribution                   |
-| `clean-artifacts` | Deletes python/mypy artifacts including eggs, cache, and pyc files |
-| `clean-tests`     | Deletes tox, coverage, and pytest artifacts                        |
-| `clean-build`     | Deletes build artifacts                                            |
-| `clean-all`       | Runs all clean scripts                                             |
+| PHONY             | Description                                                   |
+| ----------------- | ------------------------------------------------------------- |
+| `init`            | Install/Update pip, setuptools, and wheel                     |
+| `install`         | install project and requirements                              |
+| `install-dev`     | install dev requirements, project as editable, and pre-commit |
+| `build-dist`      | Build source distribution and wheel distribution              |
+| `clean-artifacts` | Deletes python/mypy artifacts, cache, and pyc files           |
+| `clean-tests`     | Deletes tox, coverage, and pytest artifacts                   |
+| `clean-build`     | Deletes build artifacts                                       |
+| `clean-all`       | Runs all clean scripts                                        |
