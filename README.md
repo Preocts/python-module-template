@@ -22,7 +22,8 @@ Straight forward to use!
 
 - Rename `module_example.py` as desired
 - Update requirements.txt as needed
-- *Optional* Use `pyproject.toml` for dependencies and optional-dependencies instead
+- *Optional* Use `pyproject.toml` for dependencies and optional-dependencies
+  instead
 
 ### Multi file module projects
 
@@ -32,9 +33,13 @@ Straight forward to use!
 
 ### GitHub Actions
 
-This module is loaded with a `python-tests.yml` which will execute some github actions running unit tests and coverage checks. This file and directory can be removed if undesired.
+This module is loaded with a `python-tests.yml` which will execute some github
+actions running unit tests and coverage checks. This file and directory can be
+removed if undesired.
 
-Within the `python-tests.yml` there is a commented step `Upload coverave to Codecov`.  If you have the repo associated with Covecov you can uncomment this step and the results of the coverage will be sent automagically.
+Within the `python-tests.yml` there is a commented step `Upload coverave to
+Codecov`.  If you have the repo associated with Covecov you can uncomment this
+step and the results of the coverage will be sent automagically.
 
 ---
 
@@ -46,8 +51,8 @@ projects. Leveraging a `venv` will ensure the installed dependency files will
 not impact other python projects or any system dependencies.
 
 The following steps outline how to install this repo for local development. See
-the [CONTRIBUTING.md](CONTRIBUTING.md) file in the repo root for information
-on contributing to the repo.
+the [CONTRIBUTING.md](CONTRIBUTING.md) file in the repo root for information on
+contributing to the repo.
 
 **Windows users**: Depending on your python install you will use `py` in place
 of `python` to create the `venv`.
@@ -148,7 +153,11 @@ deactivate
 
 ## Note on flake8:
 
-`flake8` is included in the `requirements-dev.txt` of the project. However it disagrees with `black`, the formatter of choice, on max-line-length and two general linting errors. `.pre-commit-config.yaml` is already configured to ignore these. `flake8` doesn't support `pyproject.toml` so be sure to add the following to the editor of choice as needed.
+`flake8` is included in the `requirements-dev.txt` of the project. However it
+disagrees with `black`, the formatter of choice, on max-line-length and two
+general linting errors. `.pre-commit-config.yaml` is already configured to
+ignore these. `flake8` doesn't support `pyproject.toml` so be sure to add the
+following to the editor of choice as needed.
 
 ```ini
 --ignore=W503,E203
