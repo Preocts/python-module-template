@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -92,6 +92,7 @@ max-line-length = 88
 legacy_tox_ini = """
 [tox]
 envlist = py38,py39,py310,py311,pre-commit
+isolated_build = True
 skip_missing_interpreters = true
 skipsdist = True
 
