@@ -70,25 +70,25 @@ the desired version while creating the `venv`. (e.g. `python3` or `python3.8`)
 
 Clone this repo and enter root directory of repo:
 
-```bash
-git clone https://github.com/{{ORG_NAME}}/{{REPO_NAME}}
-cd {{REPO_NAME}}
+```console
+$ git clone https://github.com/{{ORG_NAME}}/{{REPO_NAME}}
+$ cd {{REPO_NAME}}
 ```
 
 Create the `venv`:
 
-```bash
-python -m venv venv
+```console
+$ python -m venv venv
 ```
 
 Activate the `venv`:
 
-```bash
+```console
 # Linux/Mac
-. venv/bin/activate
+$ . venv/bin/activate
 
 # Windows
-venv\Scripts\activate
+$ venv\Scripts\activate
 ```
 
 The command prompt should now have a `(venv)` prefix on it. `python` will now
@@ -96,27 +96,27 @@ call the version of the interpreter used to create the `venv`
 
 Install editable library and development requirements:
 
-```bash
+```console
 # Update pip, setuptools, and wheel
-python -m pip install --upgrade pip setuptools wheel pip-tools
+$ python -m pip install --upgrade pip setuptools wheel pip-tools
 
 # Install development requirements
-python -m pip install -r requirements-dev.txt
+$ python -m pip install -r requirements-dev.txt
 
 # Install requirements (if any defined)
-python -m pip install -r requirements.txt
+$ python -m pip install -r requirements.txt
 
 # Install package
-pip install .
+$ pip install .
 
 # Optional: install editable package (pip install -e)
-pip install --editable .
+$ pip install --editable .
 ```
 
 Install pre-commit [(see below for details)](#pre-commit):
 
-```bash
-pre-commit install
+```console
+$ pre-commit install
 ```
 
 ---
@@ -125,28 +125,28 @@ pre-commit install
 
 Run pre-commit on all files:
 
-```bash
-pre-commit run --all-files
+```console
+$ pre-commit run --all-files
 ```
 
 Run tests:
 
-```bash
-tox [-r] [-e py3x]
+```console
+$ tox [-r] [-e py3x]
 ```
 
 Build dist:
 
-```bash
-python -m pip install --upgrade build
+```console
+$ python -m pip install --upgrade build
 
-python -m build
+$ python -m build
 ```
 
 To deactivate (exit) the `venv`:
 
-```bash
-deactivate
+```console
+$ deactivate
 ```
 
 ---
