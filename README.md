@@ -14,6 +14,13 @@
 
 ---
 
+## Public Archive
+
+Archiving this project in favor of the
+[python-src-template](https://github.com/Preocts/python-src-template) project
+here. They have aligned in nature and function.
+
+
 ## A template for my non-library style boilerplate.
 
 Straight forward to use!
