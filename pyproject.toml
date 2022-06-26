@@ -27,7 +27,19 @@ classifiers = [
 dependencies = []
 
 [project.optional-dependencies]
-example = []
+dev = [
+    "pre-commit",
+    "black",
+    "mypy",
+    "flake8",
+    "flake8-builtins",
+]
+test= [
+    "pytest",
+    "pytest-randomly",
+    "coverage",
+    "tox"
+]
 
 [project.urls]
 homepage = "https://github.com/[your repo]/[repo name]"
@@ -97,9 +109,8 @@ skip_missing_interpreters = true
 skipsdist = True
 
 [testenv]
+deps = .[test]
 commands =
-    python -m pip install --upgrade coverage pytest
-    python -m pip install -r requirements.txt
     coverage erase
     coverage run -m pytest {posargs:tests}
     coverage xml

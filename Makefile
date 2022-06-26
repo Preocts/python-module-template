@@ -4,15 +4,16 @@ init:
 
 .PHONY: install
 install:
-	[ -f "requirements.txt" ] && pip install -r requirements.txt || true
 	python -m pip install --upgrade .
 
 .PHONY: install-dev
 install-dev:
-	[ -f "requirements.txt" ] && pip install -r requirements.txt || true
-	[ -f "requirements-dev.txt" ] && pip install -r requirements-dev.txt || true
-	python -m pip install --editable .
+	python -m pip install --editable .[dev,test]
 	pre-commit install
+
+.PHONY: install-tes
+install-test:
+	python -m pip install .[test]
 
 .PHONY: build-dist
 build-dist:

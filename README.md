@@ -21,15 +21,19 @@ Straight forward to use!
 ### Single module projects
 
 - Rename `module_example.py` as desired
-- Update requirements.txt as needed
-- *Optional* Use `pyproject.toml` for dependencies and optional-dependencies
-  instead
+- Update the `pyproject.toml`
+  - In `[tool.coverage.run]` update `source_pkgs` to the module name(s) from
+    above
+  - Add dependencies to `dependencies`
+  - Add optional dependencies to `[project.optional-dependencies]` as needed
+  - Run `make install-dev` or follow steps below to ensure everything is installed
+
 
 ### Multi file module projects
 
 - All the steps above
 - If more than one module folder exists:
-  - Uncomment and set `[tool.setuptools.packages.find]` in `pyproject.tolm`
+  - Uncomment and configure `[tool.setuptools.packages.find]` in `pyproject.toml`
 
 ### GitHub Actions
 
@@ -188,6 +192,7 @@ Makefile.
 | `init`            | Install/Update pip, setuptools, and wheel                     |
 | `install`         | install project and requirements                              |
 | `install-dev`     | install dev requirements, project as editable, and pre-commit |
+| `install-test`    | install project with test requirements                        |
 | `build-dist`      | Build source distribution and wheel distribution              |
 | `clean-artifacts` | Deletes python/mypy artifacts, cache, and pyc files           |
 | `clean-tests`     | Deletes tox, coverage, and pytest artifacts                   |
